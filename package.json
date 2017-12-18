@@ -1,0 +1,27 @@
+{
+  "name": "twitterbot",
+  "version": "1.0.0",
+  "description": "A cool Twitter Bot",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node bot.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rsingh28/TwitterBot.git"
+  },
+  "keywords": [
+    "Twitter",
+    "twit"
+  ],
+  "author": "Rashmeet Singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rsingh28/TwitterBot/issues"
+  },
+  "homepage": "https://github.com/rsingh28/TwitterBot#readme",
+  "dependencies": {
+    "twit": "^2.2.9"
+  }
+}
