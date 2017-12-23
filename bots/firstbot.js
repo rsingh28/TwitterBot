@@ -27,7 +27,7 @@ function retreive(){
 	}
 }
 
-retreive();
+//retreive();
 
 // =============================================================================================
 
@@ -50,6 +50,40 @@ function firstTweet(){
 	}
 }
 
-firstTweet();
+//firstTweet();
 
+// =============================================================================================
+
+// ================== Mentioning a new follower in a tweet! ====================================
+
+function newFollowerTweet(){
+	var stream = T.stream('user');
+
+	stream.on('follow', newFollow);
+
+	function newFollow(data){
+		var name = data.source.name;
+		var screenName = data.source.screen_name;
+		console.log(screenName + " followed me!!");
+		tweetIt("Hello, @" + screenName + ", I am a friendly bot. Thanks for following me " + name + "!");
+	}
+
+	function tweetIt(text){
+		var twitterPost = {
+			status: text
+		}
+
+		T.post('statuses/update', twitterPost, post); 
+
+		function post(err, data, response) {
+			if(err){
+				console.log("Oops! Something went wrong!");
+			}
+			else{
+				console.log("Tweet is up on twitter!");
+			}
+		}
+	}
+}
+newFollowerTweet();
 // =============================================================================================
