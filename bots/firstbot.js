@@ -8,6 +8,8 @@ var config = require('../config');
 
 var T = new Twit(config);
 
+var fs = require('fs');
+
 // ================== Retrieving 5 tweets that have the word "BitCoin" in it ===================
 
 function retreive(){
@@ -85,5 +87,38 @@ function newFollowerTweet(){
 		}
 	}
 }
-newFollowerTweet();
+//newFollowerTweet();
+
+// =============================================================================================
+
+// ============================= Posting an image/media  =======================================
+
+function postPic(){
+	var pic = fs.readFileSync('../Media/HarryPotter.jpg', { encoding: 'base64' });
+
+	T.post('media/upload', { media_data: pic }, upload);
+
+	function upload(err, data, response){
+		var id = data.media_id_string;
+
+		var tweet = {
+			status: "Harry Potter is one of the best movies ever @jk_rowling ‏@HarryPotterFilm #nodeJs #codingLife",
+			media_ids: [id]
+		}
+
+		T.post('statuses/update', tweet, post);
+
+		function post(err, data, response) {
+			if(err){
+				console.log("Oops! Something went wrong!");
+			}
+			else{
+				console.log("Tweet is up on twitter!");
+			}
+		}
+	}
+
+}
+postPic();
+
 // =============================================================================================
