@@ -1,1 +1,1 @@
-worker: node bots/TrumpBot.js
+worker: node bots/randomNumBot.js
