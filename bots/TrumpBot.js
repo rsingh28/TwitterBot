@@ -45,9 +45,12 @@ var stream = T.stream('statuses/filter', { follow: '25073877' });
 
 stream.on('tweet', function (data) {
 	var twitterId = data.user.screen_name;
-	if(twitterId == 'I_am_aBot'){
+	if(twitterId != 'realDonaldTrump'){
 		return;
 	}
+
+	console.log(data);
+
 	console.log(twitterId + " posted!");
 	var randomNum = Math.floor(Math.random() * 100);
 	apology("@" + twitterId + " tweeted again :( . I would like to apologize on his behalf #RandomNumber" + randomNum);
